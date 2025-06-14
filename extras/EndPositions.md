@@ -6,31 +6,26 @@ Example: if the switch address on a Lenz LH100 is in the range of 397..400, the 
 ![State diagram](StateMachineServoConfig.png "State diagram")
 
 The figure above shows the state diagram to configure the servos.
+
+### Enter configuration mode ###
 To enter configuration mode, F9 should be pushed tree times on, and two times off, within a period of three seconds.
 
-// - F9: enter / leave configuration mode
-// - F1 .. F4: select servo 1 ..4
-// - F5: Set servo in middle position, as well as both tresholds (1500 us).
-// - F6: Set sevo speed (default = 6)
-// - F7: Set treshold 1 (straight)
-// - F8: Set treshold 2 (diverging)
-// - F0: store current setting in EEPROM (while in F6, F7 or F8)
+### Select servo ###
+The desired servo is selected via the function keys F1 .. F4. F1 idsfor servo 1, F2 for servo 2 etc. Note that the current software is written for a maximum of 4 servos. It would be relatively simple to extend this number, however.
 
+Deactivating F1..F4 will leave the configuration mode for that servo and allows other servos to be configured.
 
-Links to further information:
-- [Details of the decoder's operation](extras/Description.md#Description)
-- [Used addresses and configuration](extras/Addresses.md#Addresses)
-- [Alternatives to stop trains](extras/HowToStop.md#HowToStop)
+### Set middle position ###
+By activating F5, the servo will move to the middle position (1500 us). Also both threshold values will be set to 1500 us.
 
-### RS-Bus feedback ###
-The servo decoder is able to send feedback information via the (Lenz) RS-Bus. In addition to sending feedbacks, this bus can also be used for reading CV values via PoM messages (RS-Bus address 128).
+### Set servo speed ###
+F6 should activated be set the speed at which the servo moves. The default value is 6. Change the loco speed on the handheld to change this speed.
 
-### Software ###
-The servo decoder software is written for the Arduino IDE. The software requires the use of the AP_DCC_Decoder_Core: https://github.com/aikopras/AP_DCC_Decoder_Core, as well as the Servo-TCA library: https://github.com/aikopras/Servo-TCA.
+### Threshold 1 (straight) ###
+Activate F7 to set threshold 1, which is, in case of switches, for the straight position. If a loco speed is set, the position will slowly change. By increasing the loco speed, the change will be faster. By changing the loco direction, the position will change into the other direction.
 
-### Hardware ###
-The software runs on the servo-2 decoder board with a AVR64DA28 processor. The design of this board is open source, and it can be found on [OSHWLAB](https://oshwlab.com/aikopras/support-lift-controller_copy_copy_copy_copy). From there it can be imported into EasyEda and ordered at JLCPCB. The AVR64DA28 processor is a THT component, and can be ordered from companies such as Mouser.
+### Threshold 2 (diverging) ###
+Activate F8 to set threshold 2, which is for the diverging track.
 
-A variant of this is being planned, and will also be made available via OSHWLAB.
-
-![Servo-2 Board](extras/ServoPrint-2.jpeg "Servo-2 Board")
+### Store in EEPROM ###
+Every time F0 is activated, the current setting will be saved in EEPROM.
