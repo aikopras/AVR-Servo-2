@@ -7,7 +7,7 @@ The servo decoder decoder listens to DCC (Digital Command Control) accessory com
 The accessory address at which the decoder is listening, can be set using the onboard button. After this button is pushed, the decoder will use the first accessory address that is received as its own address. Pushing the button for 5 seconds will reset all CV values and delete the decoder address.
 
 ### Setting servo speed and end positions ###
-The end positions and the speed at which the servo moves, can be configured in two different ways. The first and easiest way is to use [a handheld](extras/EndPositions.md) for running trains. The second is to use [Configuration Variables](extras/ConfigurationVariables.md) (CVs).
+The end positions and the speed at which the servo moves, can be configured in two different ways. The first and easiest way is to use [a handheld](extras/EndPositions.md) for running trains; see this YouTube [video for details](https://youtu.be/aXmgzEP85_A). The second is to use [Configuration Variables](extras/ConfigurationVariables.md) (CVs).
 
 ### Selecting curves ###
 Servo movements will follow the [curves](https://github.com/aikopras/Servo-TCA/blob/main/extras/Curves/curves.md) that are defined by the Servo-TCA library. Which curvo will be used, can be determined by setting the corresponding CV. The default curve is Move-A.
